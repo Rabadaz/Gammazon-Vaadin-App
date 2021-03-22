@@ -13,10 +13,10 @@ There is currently only one Component that can be decorated (FilterableList).
 ### Database
 This Solution needs a Connection to an PostgreSQL Database.
 In development a Docker Container was used to connect to this Database (in case anyone wonders why there are Credentials checked in).
-To change the Database connection you have to edit the **application.propoerties** file. 
+To change the Database connection you have to edit the **application.properties** file. 
 
 ### Java
-2. To start this Application it is required to have Java-15 and Maven installed.
+To start this Application it is required to have Java-15 and Maven installed.
 
 If these Requirements are satisfied run:
 
@@ -34,8 +34,8 @@ The application is using the following Tech-Stack:
 ## Auth
 For Auth this Application is using Spring-Boot Security with the Application Database as a Datasource.
 
-**Note:** For demonstation Purposes the Passwords are saved as Plain-Text in the Database. 
-This can easily be changed by using another Password encryptor
+**Note:** For demonstration purposes the Passwords are saved as Plain-Text in the Database. 
+This can easily be changed by using another Passwordencoder
 
 ```java
 @Configuration
