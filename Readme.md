@@ -1,7 +1,7 @@
 # Gammazon Wearhouse
 
 Gammazon is a mini online Shop Vaadin-System. 
-It is created to demonstrate the Decorator Pattern in a bigger Software Solution.
+It is created to demonstrate the Decorator Pattern in a Software Solution.
 
 ## The Decorator Pattern
 It is used to implement the Filter Logic inside the Application.
