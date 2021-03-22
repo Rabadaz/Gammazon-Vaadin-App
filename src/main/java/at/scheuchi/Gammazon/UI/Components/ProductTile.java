@@ -1,4 +1,4 @@
-package at.scheuchi.Gammazon.UI.View.Components;
+package at.scheuchi.Gammazon.UI.Components;
 
 import at.scheuchi.Gammazon.Model.Product;
 import at.scheuchi.Gammazon.UI.View.ProductView;
@@ -29,7 +29,7 @@ public class ProductTile extends HorizontalLayout {
         H2 title = new H2();
         title.add(link);
         Paragraph desc = new Paragraph(product.getDescription());
-        Paragraph prize = new Paragraph(String.valueOf(product.getPrice()/100f) + "€");
+        Paragraph prize = new Paragraph("€ %.2f ".formatted((product.getPrice()/100f)));
         prize.getStyle().set("color", "lightblue");
         prize.getStyle().set("font-weight", "bold");
 

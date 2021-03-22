@@ -8,6 +8,7 @@ import at.scheuchi.Gammazon.UI.Layout.MainLayout;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -50,8 +51,8 @@ public class RegisterView  extends VerticalLayout {
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
         setAlignItems(Alignment.CENTER);
+        mainDiv.add(new H1("Ɣzon Registration"), new Anchor("login", "Login"),new HorizontalLayout(fName, lName), new HorizontalLayout(username, passwordField), registerbtn);
 
-        mainDiv.add(new H1("Ɣzon Registration"),new HorizontalLayout(fName, lName), new HorizontalLayout(username, passwordField), registerbtn);
         add(mainDiv);
     }
 

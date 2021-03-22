@@ -4,6 +4,9 @@ import at.scheuchi.Gammazon.Filter.AbstractProductFilter;
 import at.scheuchi.Gammazon.Filter.IFilter;
 import at.scheuchi.Gammazon.Model.Product;
 import at.scheuchi.Gammazon.Model.Tag;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 
 import java.util.Collection;
 import java.util.stream.Stream;
@@ -36,6 +39,11 @@ public class TagFilter extends AbstractProductFilter {
                 return false;
             });
         }
+    }
+
+    @Override
+    public Paragraph describeParams() {
+        return new Paragraph();
     }
 
 

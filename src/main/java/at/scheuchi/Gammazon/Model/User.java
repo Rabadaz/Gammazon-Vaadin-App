@@ -1,8 +1,11 @@
 package at.scheuchi.Gammazon.Model;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Data
 @Entity
@@ -19,5 +22,9 @@ public class User {
 
     @OneToOne
     private Customer customer;
+
+    @ManyToMany()
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Collection<GrantedPermission> authorities;
 
 }

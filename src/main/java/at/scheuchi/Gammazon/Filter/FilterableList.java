@@ -1,5 +1,9 @@
 package at.scheuchi.Gammazon.Filter;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
+
 import java.util.Collection;
 import java.util.stream.Stream;
 
@@ -19,5 +23,10 @@ public class FilterableList<T> implements IFilter<T>{
     @Override
     public IFilter<T> getChild() {
         return null;
+    }
+
+    @Override
+    public Paragraph describeParams() {
+        return new Paragraph(this.getClass().getSimpleName());
     }
 }

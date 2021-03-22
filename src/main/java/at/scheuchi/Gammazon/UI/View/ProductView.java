@@ -5,10 +5,9 @@ import at.scheuchi.Gammazon.Repository.CustomerRepository;
 import at.scheuchi.Gammazon.Repository.ProductRepository;
 import at.scheuchi.Gammazon.Repository.ReviewRepository;
 import at.scheuchi.Gammazon.Service.BuyService;
+import at.scheuchi.Gammazon.UI.Components.ReviewComponent;
+import at.scheuchi.Gammazon.UI.Components.ReviewInputComponent;
 import at.scheuchi.Gammazon.UI.Layout.MainLayout;
-import at.scheuchi.Gammazon.UI.View.Components.ProductTile;
-import at.scheuchi.Gammazon.UI.View.Components.ReviewComponent;
-import at.scheuchi.Gammazon.UI.View.Components.ReviewInputComponent;
 import at.scheuchi.Gammazon.Util.ApplicationUnifiedDateFormat;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.UI;
@@ -17,17 +16,16 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
-import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 @Route(value = "product", layout = MainLayout.class)
 public class ProductView extends VerticalLayout implements HasUrlParameter<Integer> {
@@ -56,6 +54,8 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
     private final Paragraph delivery = new Paragraph();
 
 
+
+
     public ProductView(ProductRepository productRepository, CustomerRepository customerRepository, ReviewRepository reviewRepository, BuyService buyService){
         this.productRepository = productRepository;
         this.customerRepository = customerRepository;
@@ -77,6 +77,8 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
         prize.getStyle().set("color", "#fc9803");
 
         inStock.getStyle().set("font-weight", "bold");
+
+        image.setMaxHeight("50vh");
 
 
         quantity.setValue(1d);
@@ -115,7 +117,6 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
 
         delivery.setText("The Prodct could be delivered until: "+ ApplicationUnifiedDateFormat.getInstance().getPrimaryDateFormat().format(calendar.getTime()));
 
-
         var reviewComponent = new ReviewInputComponent(productRepository, customerRepository, reviewRepository, product);
         reviewComponent.addChangeListener(this::reviewAdded);
         ratingLayout.add(reviewComponent);
@@ -139,6 +140,7 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
 
     private void buyClicked(ClickEvent<Button> buttonClickEvent) {
         buyService.buyProduct(this.product, this.quantity.getValue().intValue());
+        new Notification("You have Successfully bought %d Pices of %s".formatted(quantity.getValue().intValue(), product.getTitle()), 3000, Notification.Position.TOP_CENTER).open();
     }
 
 

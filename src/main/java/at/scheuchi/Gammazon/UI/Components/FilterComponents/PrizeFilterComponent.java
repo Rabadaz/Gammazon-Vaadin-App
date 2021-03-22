@@ -1,4 +1,4 @@
-package at.scheuchi.Gammazon.UI.View.Components.FilterComponents;
+package at.scheuchi.Gammazon.UI.Components.FilterComponents;
 
 import at.scheuchi.Gammazon.Util.Callback;
 import com.vaadin.flow.component.ClickEvent;
@@ -27,6 +27,8 @@ public class PrizeFilterComponent extends BaseFilterComponent{
 
     @Override
     protected void onAddClicked(ClickEvent<Button> buttonClickEvent) {
-        onApply.run(min.getValue(), max.getValue());
+        double maxP = max.isEmpty()? Double.MAX_VALUE : max.getValue();
+        double minP = min.isEmpty()? -1.0: min.getValue();
+        onApply.run(minP, maxP);
     }
 }

@@ -1,4 +1,4 @@
-package at.scheuchi.Gammazon.UI.View.Components;
+package at.scheuchi.Gammazon.UI.Components;
 
 import at.scheuchi.Gammazon.Model.Product;
 import at.scheuchi.Gammazon.Model.Review;
@@ -7,9 +7,7 @@ import at.scheuchi.Gammazon.Repository.ProductRepository;
 import at.scheuchi.Gammazon.Repository.ReviewRepository;
 import at.scheuchi.Gammazon.Util.UserUtils;
 import com.vaadin.flow.component.ClickEvent;
-import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
@@ -17,13 +15,9 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Page;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.util.LinkedList;
 
 @CssImport("./styles/Review/ReviewInputComponent.css")
 public class ReviewInputComponent extends VerticalLayout {

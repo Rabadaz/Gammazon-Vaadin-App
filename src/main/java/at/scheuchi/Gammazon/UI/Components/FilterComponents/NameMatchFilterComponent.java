@@ -1,4 +1,4 @@
-package at.scheuchi.Gammazon.UI.View.Components.FilterComponents;
+package at.scheuchi.Gammazon.UI.Components.FilterComponents;
 
 import at.scheuchi.Gammazon.Util.Callback;
 import com.vaadin.flow.component.ClickEvent;

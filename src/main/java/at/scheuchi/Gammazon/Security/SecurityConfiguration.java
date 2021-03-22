@@ -53,6 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/register/**")
                 .permitAll()
+                .antMatchers("/insights/**").hasAuthority("insights:view")
+                .antMatchers("/users/**").hasAuthority("users:view")
                 .and().authorizeRequests()
                 .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()
                 .anyRequest().authenticated()

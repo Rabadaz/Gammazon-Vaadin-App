@@ -1,30 +1,41 @@
 package at.scheuchi.Gammazon.UI.Insights.Components;
 
-import at.scheuchi.Gammazon.Model.Sale;
-import be.ceau.chart.dataset.BarDataset;
-import com.syndybat.chartjs.ChartJs;
+import at.scheuchi.Gammazon.Model.Product;
+import com.vaadin.flow.component.charts.Chart;
+import com.vaadin.flow.component.charts.model.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.Collection;
 
-
 public class SaleChartComponent extends VerticalLayout {
-    ChartJs chartJs;
-    private Collection<Sale> sales;
+    private final Chart chart = new Chart();
+    public SaleChartComponent(Collection<Product> products){
+        Configuration conf  = chart.getConfiguration();
 
-    public SaleChartComponent(Collection<Sale> sales) {
+        conf.getChart().setType(ChartType.PIE);
 
+        conf.setTitle("Product Sale Count");
 
-        this.sales = sales;
+        Tooltip tooltip = new Tooltip();
+        tooltip.setValueDecimals(1);
+        conf.setTooltip(tooltip);
+
+        PlotOptionsPie plotOptions = new PlotOptionsPie();
+        plotOptions.setAllowPointSelect(true);
+        plotOptions.setCursor(Cursor.POINTER);
+        plotOptions.setShowInLegend(true);
+        conf.setPlotOptions(plotOptions);
+
+        DataSeries series = new DataSeries();
+
+        for(var product : products){
+            series.add(new DataSeriesItem(product.getTitle(), product.getSales().stream().mapToInt(p -> p.getCount()).sum()));
+        }
+
+        conf.setSeries(series);
+        chart.setVisibilityTogglingDisabled(true);
+        add(chart);
     }
 
-    private ChartJs prepareChart(){
-
-
-
-        BarDataset dataset = new BarDataset()
-                .setLabel("Sales")
-                //.setData()
-    }
 
 }

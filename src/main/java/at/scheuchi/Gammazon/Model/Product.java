@@ -2,6 +2,8 @@ package at.scheuchi.Gammazon.Model;
 
 import com.vaadin.flow.component.Component;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
@@ -43,4 +45,9 @@ public class Product {
 
     @ManyToOne
     private ProductColor color;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "product")
+    private Collection<ProductSale> sales;
+
 }

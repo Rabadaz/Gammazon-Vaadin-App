@@ -1,11 +1,13 @@
 package at.scheuchi.Gammazon.Model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = {"user"})
 public class Customer{
     @Id
     @GeneratedValue

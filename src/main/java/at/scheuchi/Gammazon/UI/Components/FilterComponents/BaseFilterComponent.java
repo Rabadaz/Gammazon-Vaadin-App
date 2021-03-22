@@ -1,4 +1,4 @@
-package at.scheuchi.Gammazon.UI.View.Components.FilterComponents;
+package at.scheuchi.Gammazon.UI.Components.FilterComponents;
 
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.button.Button;
